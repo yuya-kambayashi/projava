@@ -12,15 +12,17 @@ public class RemoveDuplicate {
 
     public static String removeDuplicateString(String data){
 
+        char prev = 0;
         var builder = new StringBuilder();
 
-        for (int i = 0; i < data.length(); i++) {
-            char ch = data.charAt(i);
-            if (i > 0 && ch == data.charAt(i - 1)){
+        for (char ch : data.toCharArray()) {
+
+            if (prev == ch){
 
                 continue;
             }
             builder.append(ch);
+            prev = ch;
         }
         var result = builder.toString();
 
