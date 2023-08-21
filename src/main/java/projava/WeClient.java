@@ -1,13 +1,17 @@
 package projava;
 
+import javax.net.SocketFactory;
+import javax.net.ssl.SSLSocketFactory;
 import java.io.*;
 import java.net.Socket;
 
 public class WeClient {
     public static void main(String[] args) throws IOException{
-        var domain = "example.com";
+        var domain = "www.google.com";
+
+        SocketFactory factory = SSLSocketFactory.getDefault();
         try(
-                var soc = new Socket(domain, 80);
+                Socket soc = factory.createSocket(domain, 443);
                 var pw = new PrintWriter(soc.getOutputStream());
                 var isr = new InputStreamReader(soc.getInputStream());
                 var bur = new BufferedReader(isr);
