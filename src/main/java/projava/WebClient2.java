@@ -7,7 +7,7 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
 public class WebClient2 {
-    public static void main(String args[]) throws IOException, InterruptedException {
+    public static void main(String[] args) throws IOException, InterruptedException {
         HttpClient client = HttpClient.newHttpClient();
         URI uri = URI.create("http://example.com/");
         HttpRequest req = HttpRequest.newBuilder(uri).build();
