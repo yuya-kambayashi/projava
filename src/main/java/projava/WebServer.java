@@ -22,17 +22,12 @@ public class WebServer {
 
                 w.println("""
                         HTTP/1.1 200 OK
-                        Content-Type: text/html
+                        Content-Type: application/json
                         
-                        <html>
-                            <head>
-                                <title>Hello</title>
-                                </head>
-                            <body>
-                                <h1>Hello</h1>
-                                It works
-                            </body>
-                        </html>
+                        {
+                            "name" : "tanaka",
+                            "age" : 20,
+                        }
                         """);
             }
         }
