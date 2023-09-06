@@ -20,7 +20,10 @@ public class CheckFloatTest {
         assertTrue(new CheckFloat().check("12"));
         assertTrue(new CheckFloat().check("12.3"));
         assertTrue(new CheckFloat().check("0.3"));
-        assertTrue(new CheckFloat().check("12.30"));
+        assertFalse(new CheckFloat().check("12.30"));
+        assertTrue(new CheckFloat().check("12.03"));
+        assertFalse(new CheckFloat().check("12.030"));
+        assertFalse(new CheckFloat().check("12.300"));
 
         assertFalse(new CheckFloat().check("00.3"));
 

@@ -52,9 +52,18 @@ public class CheckFloat {
                 }
             }
         }
-        return switch(state){
-            case ZERO, INT, FRAC -> true;
-            default -> false;
-        };
+        switch(state){
+            case ZERO, INT : return true;
+            case FRAC :{
+                if (data.charAt(data.length()-1) == '0'){
+                    return false;
+                }
+                else{
+                    return true;
+                }
+            }
+
+            default : return false;
+        }
     }
 }
