@@ -27,5 +27,22 @@ public class CheckFloatTest {
 
         assertFalse(new CheckFloat().check("00.3"));
 
+        assertTrue(new CheckFloat().check("-123"));
+        assertFalse(new CheckFloat().check("--123"));
+        assertFalse(new CheckFloat().check("-12-3"));
+
+        assertTrue(new CheckFloat().check("-123.4"));
+        assertFalse(new CheckFloat().check("--123.4"));
+        assertFalse(new CheckFloat().check("-12-3.4"));
+
+        assertFalse(new CheckFloat().check("-"));
+        assertFalse(new CheckFloat().check("-012"));
+        assertFalse(new CheckFloat().check("-.12"));
+
+        assertTrue(new CheckFloat().check("-0.12"));
+        assertFalse(new CheckFloat().check("-01.2"));
+
+
+
     }
 }

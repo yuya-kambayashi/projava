@@ -7,7 +7,8 @@ public class CheckFloat {
         INT,
         FRAC_START,
         FRAC,
-        ZERO
+        ZERO,
+        SIGN,
     }
 
     static boolean check(String data){
@@ -16,6 +17,17 @@ public class CheckFloat {
         for (char ch : data.toCharArray()){
             switch (state){
                 case START -> {
+                    if (ch == '0'){
+                        state = FloatState.ZERO;
+                    } else if (ch >= '1' && ch <= '9'){
+                        state = FloatState.INT;
+                    } else if (ch == '-'){
+                        state = FloatState.SIGN;
+                    } else{
+                        return false;
+                    }
+                }
+                case SIGN -> {
                     if (ch == '0'){
                         state = FloatState.ZERO;
                     } else if (ch >= '1' && ch <= '9'){
