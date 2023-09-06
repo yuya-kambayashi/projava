@@ -1,5 +1,8 @@
 package projava;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class CheckFloat {
 
     enum FloatState {
@@ -11,7 +14,7 @@ public class CheckFloat {
         SIGN,
     }
 
-    static boolean check(String data){
+    static boolean checkByHand(String data){
         var state = FloatState.START;
 
         for (char ch : data.toCharArray()){
@@ -77,5 +80,12 @@ public class CheckFloat {
 
             default : return false;
         }
+    }
+
+    static Pattern pat = Pattern.compile("(\\-?)(0|[1-9][0-9]*)(\\.[0-9]+)?");
+
+    static boolean checkByRegex(String data){
+        Matcher mat = pat.matcher(data);
+        return mat.matches();
     }
 }
