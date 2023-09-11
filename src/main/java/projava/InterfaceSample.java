@@ -7,8 +7,13 @@ public class InterfaceSample {
     record Teacher(String name, String subject) implements Named{}
 
 
+    @FunctionalInterface
     interface Named {
         String name();
+
+        default String greeding(){
+            return "Hello Mr. %s".formatted((name()));
+        }
     }
 
     static class Passenger implements Named{
