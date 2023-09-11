@@ -25,17 +25,11 @@ public class InterfaceSample {
     }
 
 
-    public static void main(String args[]){
+    public static void main(String[] args){
         var people = List.of(new Student("kis", 80), new Teacher("kam", "Math"), new Passenger());
 
         for(var p : people){
-//            var n = p instanceof Student s ? s.name() :
-//                    p instanceof Teacher t ? t.name() :
-//                            "---";
-
-            var n = p.name();
-
-            System.out.println("Hello Mr.%s ".formatted(n));
+            System.out.println(p.greeding());
         }
     }
 }
