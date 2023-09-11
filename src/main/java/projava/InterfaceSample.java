@@ -11,8 +11,17 @@ public class InterfaceSample {
         String name();
     }
 
+    static class Passenger implements Named{
+
+        @Override
+        public String name() {
+            return "no name";
+        }
+    }
+
+
     public static void main(String args[]){
-        var people = List.of(new Student("kis", 80), new Teacher("kam", "Math"));
+        var people = List.of(new Student("kis", 80), new Teacher("kam", "Math"), new Passenger());
 
         for(var p : people){
 //            var n = p instanceof Student s ? s.name() :
@@ -25,3 +34,4 @@ public class InterfaceSample {
         }
     }
 }
+
