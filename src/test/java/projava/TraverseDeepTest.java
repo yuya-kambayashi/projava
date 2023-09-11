@@ -19,7 +19,7 @@ class TraverseDeepTest {
                 {1, 1, 1, 1, 1, 1, 1},
         };
 
-        var actual = new TraverseDeep().traverse(map, 1, 1);
+        var actual = TraverseDeep.traverse(map, 1, 1);
 
         char[] ch = {'.', '*', 'G', 'o'};
         for(var row : map){
