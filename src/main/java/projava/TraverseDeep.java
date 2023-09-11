@@ -1,26 +1,34 @@
 package projava;
 
+import java.util.ArrayDeque;
+
 public class TraverseDeep {
 
     static public boolean traverse(int[][] map, int curX, int curY){
 
-        switch (map[curY][curX]){
-            case 0:
-                break;
-            case 2:
-                return true;
-            default:
-                return false;
+        record Position(int x, int y){}
+
+        var stack = new ArrayDeque<Position>();
+        stack.push(new Position(curX, curY));
+
+        for(Position p; (p = stack.pollFirst()) != null ;) {
+
+            switch (map[p.y()][p.x()]) {
+                case 0:
+                    break;
+                case 2:
+                    return true;
+                default:
+                    continue;
+            }
+
+            map[p.y()][p.x()] = 3;
+            stack.push(new Position(p.x() - 1, p.y()));
+            stack.push(new Position(p.x() + 1, p.y()));
+            stack.push(new Position(p.x(), p.y() - 1));
+            stack.push(new Position(p.x(), p.y() + 1));
         }
 
-        map[curY][curX] = 3;
-        if (traverse(map, curX+1, curY) ||
-                traverse(map, curX-1, curY) ||
-                traverse(map, curX, curY+1) ||
-                traverse(map, curX+1, curY-1) ){
-            return true;
-        }
-        map[curX][curY] = 0;
 
         return false;
     }
